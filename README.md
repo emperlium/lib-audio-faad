@@ -53,7 +53,7 @@ On Ubuntu distributions;
 
 ### new()
 
-Instantiates a new Nick::Audio::LAME object.
+Instantiates a new Nick::Audio::FAAD object.
 
 Arguments are interpreted as a hash.
 

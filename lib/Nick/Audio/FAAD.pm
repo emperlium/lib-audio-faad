@@ -53,7 +53,7 @@ Nick::Audio::FAAD - Interface to the FAAD2 (AAC decoding) library.
 
 =head2 new()
 
-Instantiates a new Nick::Audio::LAME object.
+Instantiates a new Nick::Audio::FAAD object.
 
 Arguments are interpreted as a hash.
 
