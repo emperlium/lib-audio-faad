@@ -128,3 +128,26 @@ Returns the sample rate of the last decoded frame.
 ### get\_last\_channels()
 
 Returns the number of audio channels of the last decoded frame.
+
+### get\_last\_sbr()
+
+Returns whether sbr was used in the last decoded frame.
+
+- NO\_SBR
+- SBR\_UPSAMPLED
+- SBR\_DOWNSAMPLED
+- NO\_SBR\_UPSAMPLED
+
+### get\_last\_object\_type()
+
+Returns the object type of the last decoded frame.
+
+- MAIN
+- LC
+- SSR
+- LTP
+- HE\_AAC
+- ER\_LC
+- ER\_LTP
+- LD
+- DRM\_ER\_LC

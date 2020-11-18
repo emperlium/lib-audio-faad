@@ -232,3 +232,17 @@ NICKAUDIOFAAD::get_last_channels()
         RETVAL = ( THIS -> frame_info ).channels;
     OUTPUT:
         RETVAL
+
+unsigned char
+NICKAUDIOFAAD::get_last_sbr_xs()
+    CODE:
+        RETVAL = ( THIS -> frame_info ).sbr;
+    OUTPUT:
+        RETVAL
+
+unsigned char
+NICKAUDIOFAAD::get_last_object_type_xs()
+    CODE:
+        RETVAL = ( THIS -> frame_info ).object_type;
+    OUTPUT:
+        RETVAL

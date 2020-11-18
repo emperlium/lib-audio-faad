@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 16;
 
 use MIME::Base64 'decode_base64';
 use Digest::MD5 'md5_base64';
@@ -94,6 +94,10 @@ is( $aac -> get_last_sample_rate(), 22050, 'get_last_sample_rate()' );
 
 is( $aac -> get_last_channels(), 2, 'get_last_channels()' );
 
+is( $aac -> get_last_sbr(), 'NO_SBR', 'get_last_sbr()' );
+
+is( $aac -> get_last_object_type(), 'LC', 'get_last_object_type()' );
+
 eval {
     $buff_in = 'bad data';
     $aac -> decode();
@@ -103,6 +107,7 @@ is( substr( $@, 0, 17 ), 'FAAD decode error' );
 $buff_in = undef;
 $aac -> decode();
 is( $buff_out, undef, 'Undefined input');
+
 $aac = Nick::Audio::FAAD -> new(
     'init_sample'   => "\x13\x88",
     'channels'      => 1,
@@ -126,3 +131,6 @@ is(
     'upsampled get_last_sample_rate()'
 );
 
+is( $aac -> get_last_sbr(), 'NO_SBR_UPSAMPLED', 'get_last_sbr()' );
+
+is( $aac -> get_last_object_type(), 'LC', 'get_last_object_type()' );

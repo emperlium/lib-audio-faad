@@ -8,6 +8,25 @@ use Carp;
 
 our $VERSION = '0.01';
 
+our %OBJECT_TYPES = qw(
+     1    MAIN
+     2    LC
+     3    SSR
+     4    LTP
+     5    HE_AAC
+    17    ER_LC
+    19    ER_LTP
+    23    LD
+    27    DRM_ER_LC
+);
+
+our @SBR = qw(
+    NO_SBR
+    SBR_UPSAMPLED
+    SBR_DOWNSAMPLED
+    NO_SBR_UPSAMPLED
+);
+
 XSLoader::load 'Nick::Audio::FAAD' => $VERSION;
 
 =pod
@@ -137,6 +156,48 @@ Returns the sample rate of the last decoded frame.
 
 Returns the number of audio channels of the last decoded frame.
 
+=head2 get_last_sbr()
+
+Returns whether sbr was used in the last decoded frame.
+
+=over 2
+
+=item * NO_SBR
+
+=item * SBR_UPSAMPLED
+
+=item * SBR_DOWNSAMPLED
+
+=item * NO_SBR_UPSAMPLED
+
+=back
+
+=head2 get_last_object_type()
+
+Returns the object type of the last decoded frame.
+
+=over 2
+
+=item * MAIN
+
+=item * LC
+
+=item * SSR
+
+=item * LTP
+
+=item * HE_AAC
+
+=item * ER_LC
+
+=item * ER_LTP
+
+=item * LD
+
+=item * DRM_ER_LC
+
+=back
+
 =cut
 
 sub new {
@@ -160,6 +221,18 @@ sub new {
             buffer_in buffer_out dont_upsample
         ) }
     );
+}
+
+sub get_last_sbr {
+    return $SBR[
+        $_[0] -> get_last_sbr_xs()
+    ];
+}
+
+sub get_last_object_type {
+    return $OBJECT_TYPES{
+        $_[0] -> get_last_object_type_xs()
+    };
 }
 
 1;
