@@ -4,7 +4,7 @@ Interface to the FAAD2 (Freeware Advanced Audio Decoder) AAC decoder library.
 
 ## Dependencies
 
-You'll need the [FAAD2 library](http://www.audiocoding.com/faad2.html).
+You'll need the [FAAD2 library](https://sourceforge.net/projects/faac/).
 
 On Ubuntu distributions;
 
