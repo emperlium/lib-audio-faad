@@ -113,9 +113,17 @@ Returns current number of channels being output.
 
 Returns the scalar currently being used to pull AAC frames from.
 
+=head2 set_buffer_in_ref()
+
+Sets the scalar that'll be used to pull AAC frames from.
+
 =head2 get_buffer_out_ref()
 
 Returns the scalar currently being used to push decoded PCM to.
+
+=head2 set_buffer_out_ref()
+
+Sets the scalar that'll be used to push decoded PCM to.
 
 =head2 get_last_samples()
 

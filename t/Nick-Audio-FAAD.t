@@ -110,6 +110,9 @@ $aac = Nick::Audio::FAAD -> new(
     'dont_upsample' => 0
 );
 
+$aac -> set_buffer_in_ref( $buff_in );
+$aac -> set_buffer_out_ref( $buff_out );
+
 $buff_in = shift @data;
 $aac -> decode();
 is(

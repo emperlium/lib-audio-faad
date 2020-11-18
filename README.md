@@ -105,9 +105,17 @@ Returns current number of channels being output.
 
 Returns the scalar currently being used to pull AAC frames from.
 
+### set\_buffer\_in\_ref()
+
+Sets the scalar that'll be used to pull AAC frames from.
+
 ### get\_buffer\_out\_ref()
 
 Returns the scalar currently being used to push decoded PCM to.
+
+### set\_buffer\_out\_ref()
+
+Sets the scalar that'll be used to push decoded PCM to.
 
 ### get\_last\_samples()
 
