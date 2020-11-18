@@ -28,13 +28,14 @@ typedef struct nickaudiofaad NICKAUDIOFAAD;
 MODULE = Nick::Audio::FAAD  PACKAGE = Nick::Audio::FAAD
 
 static NICKAUDIOFAAD *
-NICKAUDIOFAAD::new_xs( init_sample, init_length, channels_out, gain, scalar_in, scalar_out )
+NICKAUDIOFAAD::new_xs( init_sample, init_length, channels_out, gain, scalar_in, scalar_out, dont_upsample )
         unsigned char *init_sample;
         U32 init_length;
         unsigned char channels_out;
         float gain;
         SV *scalar_in;
         SV *scalar_out;
+        unsigned char dont_upsample;
     CODE:
         Newxz( RETVAL, 1, NICKAUDIOFAAD );
         RETVAL -> decoder = NeAACDecOpen();
@@ -43,7 +44,7 @@ NICKAUDIOFAAD::new_xs( init_sample, init_length, channels_out, gain, scalar_in, 
         config -> outputFormat = FAAD_FMT_16BIT;
         config -> downMatrix = 1;
         config -> defObjectType = LC;
-        config -> dontUpSampleImplicitSBR = 1;
+        config -> dontUpSampleImplicitSBR = dont_upsample;
         if (
             NeAACDecSetConfiguration( RETVAL -> decoder, config ) == 0
         ) {

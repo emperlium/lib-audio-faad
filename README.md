@@ -85,6 +85,10 @@ The rest are optional.
 
     Decibels of gain to apply to the decoded PCM.
 
+- dont_upsample
+
+    Suppress upsampling audio.
+
 ### decode()
 
 Decodes the frame (if present) in the buffer\_in scalar, returning number of bytes of PCM written to buffer\_out.

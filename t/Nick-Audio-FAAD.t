@@ -68,7 +68,8 @@ my $aac = Nick::Audio::FAAD -> new(
     'buffer_in'     => \$buff_in,
     'buffer_out'    => \$buff_out,
     'channels'      => 1,
-    'gain'          => -3
+    'gain'          => -3,
+    'dont_upsample' => 1
 );
 
 ok( defined( $aac ), 'new()' );
@@ -79,8 +80,8 @@ is( $aac -> get_sample_rate(), 44100, 'get_sample_rate()' );
 is( $aac -> get_channels(), 2, 'get_channels()' );
 
 my @got_md5;
-while ( @data ) {
-    $buff_in = shift @data;
+for ( 0 .. $#data ) {
+    $buff_in = $data[$_];
     $aac -> decode()
         and push @got_md5 => md5_base64( $buff_out );
 }
@@ -102,3 +103,23 @@ is( substr( $@, 0, 17 ), 'FAAD decode error' );
 $buff_in = undef;
 $aac -> decode();
 is( $buff_out, undef, 'Undefined input');
+$aac = Nick::Audio::FAAD -> new(
+    'init_sample'   => "\x13\x88",
+    'channels'      => 1,
+    'gain'          => -3,
+    'dont_upsample' => 0
+);
+
+$buff_in = shift @data;
+$aac -> decode();
+is(
+    md5_base64( $buff_out ),
+    '1B2M2Y8AsgTpgAmY7PhCfg',
+    'upsampled'
+);
+is(
+    $aac -> get_last_sample_rate(),
+    44100,
+    'upsampled get_last_sample_rate()'
+);
+

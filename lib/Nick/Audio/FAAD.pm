@@ -91,6 +91,10 @@ How many audio channels the stream has.
 
 Decibels of gain to apply to the decoded PCM.
 
+=item dont_upsample
+
+Suppress upsampling audio.
+
 =back
 
 =head2 decode()
@@ -134,6 +138,8 @@ sub new {
     exists( $settings{'init_length'} )
         or $settings{'init_length'}
             = length $settings{'init_sample'};
+    exists( $settings{'dont_upsample'} )
+        or $settings{'dont_upsample'} = 1;
     for ( qw( in out ) ) {
         exists( $settings{ 'buffer_' . $_ } )
             or $settings{ 'buffer_' . $_ } = do{ my $x = '' };
@@ -142,7 +148,8 @@ sub new {
     $settings{'gain'} ||= 0;
     return Nick::Audio::FAAD -> new_xs(
         @settings{ qw(
-            init_sample init_length channels gain buffer_in buffer_out
+            init_sample init_length channels gain
+            buffer_in buffer_out dont_upsample
         ) }
     );
 }
