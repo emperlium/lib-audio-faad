@@ -18,6 +18,7 @@ our %OBJECT_TYPES = qw(
     19    ER_LTP
     23    LD
     27    DRM_ER_LC
+    29    PS
 );
 
 our @SBR = qw(
