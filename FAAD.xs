@@ -74,7 +74,10 @@ NICKAUDIOFAAD::new_xs( init_sample, init_length, channels_out, gain, scalar_in, 
             ? SvRV( scalar_out )
             : scalar_out
         );
+        // This will be double actual rate if dont_upsample is 1,
+        // rate <= 24000 & type is LC
         RETVAL -> sample_rate = sample_rate;
+        // FAAD always decodes to stereo, though this can be 1
         RETVAL -> channels = channels_in;
         RETVAL -> mono = channels_out == 1;
         RETVAL -> gain = pow( 10, gain / 20 );
