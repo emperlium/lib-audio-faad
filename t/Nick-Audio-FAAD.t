@@ -42,24 +42,24 @@ my @want_md5 = qw(
     kNQS/ARuPzhoLz77cpS4Ag
     CHTmM6Xb3GNTHuheEgUs8w
     CVNgacnYC4SquuHGGo3nrA
-    Grf2DudZBhq2uRa4JuLm7w
+    oI0mE7Emh1+WzW2dBazHhQ
     GzF2dfRVdHjHjISNDqrtJg
     QyWLNQ9O9RLcv671xeRPzw
     eC0uKlcNvCFe/SNuCrjE/A
     0rA/8/8WneL4EilTSDdQdA
     +L6NKCShsGr6MbZaefrLxQ
-    69ACbOUXne3IoCuaQPwzfw
-    xAwOTbyGOEUq1UOkuswwfQ
+    7z3FIsGHNFiGG/bBWJ9NBQ
+    VR1SIHFDfEjVFalcNpn3sQ
     nHDVzfHgvIgp+txQsPd2bQ
     Mk8kbZ1jRfrSiYnyo7EDvg
     mndFVW4+OTuILKxABA1cOA
     4Wsg1ybaoxoKER9fB2t9gg
     3T0Yg9MTZKCasBCFYsbUHA
-    e8/lE39UIlpC5KfpxSmWjw
-    LVPg/FRfluMIu7GyCJC9Qg
-    NgXA0aNRouvtn5wrFY5VZw
+    FNe79ecfNvoW0CZrcIcaKA
+    dY7IB4MnhtcFkDEJJ31Rzg
+    b2rzgqu8tTZQW8FV8YfuZw
     J/KeU3QsTzM8dHCgksDkJw
-    vJE0XSqfUqO9qs/37EYoWw
+    EDYS+aW51Ob2z0C7dzslrA
 );
 
 my( $buff_in, $buff_out );
